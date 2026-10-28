@@ -15,9 +15,16 @@ jobs:
       - run: echo "event=${{ github.event_name }} branch=${{ github.ref_name }} commit=${{ github.sha }} "
       - name: Write a result file
         run: echo "42 tests" > result.txt
+      - name: Upload the result
+        uses: actions/upload-artifact@v4
+        with:
+          name: result
+          path: result.txt
   report:
     needs: hello
     runs-on: ubuntu-latest
     steps:
+      - name: Download the result
+        uses: actions/download-artifact@v4
       - name: Read the result file
         run: cat result.txt
