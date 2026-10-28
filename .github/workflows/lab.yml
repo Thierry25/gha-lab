@@ -26,5 +26,7 @@ jobs:
     steps:
       - name: Download the result
         uses: actions/download-artifact@v4
+        with:
+          name: result
       - name: Read the result file
         run: cat result.txt
