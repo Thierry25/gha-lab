@@ -15,5 +15,5 @@ jobs:
       - run: echo "event=${{ github.event_name }} branch=${{ github.ref_name }} commit=${{ github.sha }} "
       - run: exit 1
       - name: After the failure
-        if: failure()
+        if: success()
         run: echo "After the failure"
