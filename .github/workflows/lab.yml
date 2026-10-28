@@ -32,6 +32,8 @@ jobs:
         with:
           name: result-java-${{ matrix.java }}
           path: result.txt
+      - name: Print the secret
+        run: echo "secret is ${{ secrets.LAB_SECRET }}
   report:
     needs: hello
     runs-on: ubuntu-latest
