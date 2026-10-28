@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - run: echo "Hello form $(hostname), running as $(whoami)"
       - run: ls -la
+      - run: git log --oneline | wc -l
       - run: echo "event=${{ github.event_name }} branch=${{ github.ref_name }} commit=${{ github.sha }} "
