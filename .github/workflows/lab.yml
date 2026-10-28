@@ -39,4 +39,4 @@ jobs:
         with:
           pattern: result-*
       - name: Read the result files
-        run: cat result=*/result.txt
+        run: cat result-*/result.txt
