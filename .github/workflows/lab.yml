@@ -4,11 +4,21 @@ on:
   workflow_dispatch:
 jobs:
   hello:
+    strategy:
+      matrix:
+        java: [17, 21]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Install Java ${{ matrix.java }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+      - name: Show the java version
+        run: java -version
       - run: echo "Hello form $(hostname), running as $(whoami)"
       - run: ls -la
       - run: git log --oneline | wc -l
