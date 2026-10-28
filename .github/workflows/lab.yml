@@ -16,6 +16,7 @@ jobs:
       - name: Write a result file
         run: echo "42 tests" > result.txt
   report:
+    needs: hello
     runs-on: ubuntu-latest
     steps:
       - name: Read the result file
