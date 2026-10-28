@@ -14,4 +14,6 @@ jobs:
       - run: git log --oneline | wc -l
       - run: echo "event=${{ github.event_name }} branch=${{ github.ref_name }} commit=${{ github.sha }} "
       - run: exit 1
-      - run: echo "After the failure"
+      - name: After the failure
+        if: always()
+        run: echo "After the failure"
